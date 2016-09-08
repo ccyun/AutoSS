@@ -1,0 +1,55 @@
+[
+    {
+        "url": "http://freeshadowsocks.cf/",
+        "type": "html",
+        "filter": ".*[:|：]|\\n|\\r|\\s",
+        "block": "div.container div.col-md-6",
+        "server": "h4:eq(0)",
+        "port": "h4:eq(1)",
+        "method": "h4:eq(3)",
+        "password": "h4:eq(2)",
+        "auth": false
+    },
+    {
+        "url": "http://www.ishadowsocks.org/",
+        "type": "html",
+        "filter": ".*[:|：]|\\n|\\r|\\s",
+        "block": "#free>div>div.row>div.col-lg-4",
+        "server": "h4:eq(0)",
+        "port": "h4:eq(1)",
+        "method": "h4:eq(3)",
+        "password": "h4:eq(2)",
+        "auth": false
+    },
+    {
+        "url": "http://www.getshadowsocks.com/",
+        "type": "html",
+        "filter": ".*[:|：]|\\n|\\r|\\s",
+        "block": "#s",
+        "server": "p.lead:eq(0)",
+        "port": "p.lead:eq(1)",
+        "method": "p.lead:eq(3)",
+        "password": "p.lead:eq(2)",
+        "auth": false
+    },
+    {
+        "url": "http://www.360sb.net/",
+        "type": "html",
+        "filter": ".*[:|：]|\\n|\\r|\\s",
+        "block": "section#fh5co-about>div.container div.col-md-4",
+        "server": "div.fh5co-person>span.fh5co-position:eq(1)",
+        "port": "span.fh5co-position:eq(2)",
+        "method": "span.fh5co-position:eq(3)",
+        "password": "span.fh5co-position:eq(4)",
+        "auth": false
+    },
+    {
+        "url": "https://api.mianvpn.com/ajax.php?verify=true&mod=getfreess",
+        "type": "json",
+        "server": "i",
+        "port": "p",
+        "method": "m",
+        "password": "pw",
+        "auth": false
+    }
+]
