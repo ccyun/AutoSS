@@ -1,6 +1,7 @@
 package octopus
 
 import (
+	"encoding/base64"
 	"encoding/json"
 	"io/ioutil"
 	"log"
@@ -9,6 +10,7 @@ import (
 	"regexp"
 	"runtime"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -85,7 +87,7 @@ func (o *Octopus) initRule() *Octopus {
 	return o
 }
 
-//run 并发执行
+//Run 并发执行
 func (o *Octopus) Run() {
 	o.initConfig()
 	o.initRule()
@@ -97,7 +99,6 @@ func (o *Octopus) Run() {
 		go o.analysis(&wg, v)
 	}
 	wg.Wait() //阻塞
-
 	log.Println("成功获取到 " + strconv.Itoa(len(o.Config.Configs)) + " 个账号密码")
 	o.saveConfig()
 	o.reStart()
@@ -124,6 +125,7 @@ func (o *Octopus) analysis(wg *sync.WaitGroup, rule Rule) {
 			return
 		}
 	}
+	o.deqr()
 }
 
 //analysisHTML 分析html dom
@@ -181,6 +183,48 @@ func (o *Octopus) analysisJSON(rule Rule, doc *goquery.Document) error {
 		}
 	}
 	return nil
+}
+
+func (o *Octopus) deqr() {
+	urls := []string{
+		"http://cli.im/Api/Browser/deqr?data=http://www.shadowsocks8.net/images/server01.png",
+		"http://cli.im/Api/Browser/deqr?data=http://www.shadowsocks8.net/images/server02.png",
+		"http://cli.im/Api/Browser/deqr?data=http://www.shadowsocks8.net/images/server03.png",
+	}
+
+	for _, urlStr := range urls {
+		if doc, err := goquery.NewDocument(urlStr); err == nil {
+			info := struct {
+				Status int `json:"status"`
+				Data   struct {
+					RawData string
+				} `json:"data"`
+			}{}
+			json.Unmarshal([]byte(doc.Text()), &info)
+			if info.Data.RawData != "" {
+				info.Data.RawData = strings.Replace(info.Data.RawData, "ss://", "", 10)
+				dataInfo, _ := base64.StdEncoding.DecodeString(info.Data.RawData)
+				info.Data.RawData = string(dataInfo)
+				d := strings.FieldsFunc(info.Data.RawData, func(s rune) bool {
+					switch s {
+					case '\n', 0x3A, 0x40:
+						return true
+					}
+					return false
+				})
+				if d[0] != "" && d[1] != "" && d[2] != "" && d[3] != "" {
+					var conf conf
+					conf.Server = d[2]
+					conf.ServerPort, _ = strconv.Atoi(d[3])
+					conf.Password = d[1]
+					conf.Method = d[0]
+					conf.Remarks = o.remarks
+					conf.Auth = false
+					o.Config.Configs = append(o.Config.Configs, conf)
+				}
+			}
+		}
+	}
 }
 
 //saveConfig 保存配置文件

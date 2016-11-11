@@ -1,0 +1,125 @@
+{
+    "configs": [
+        {
+            "server": "a.iss.tf",
+            "server_port": 1024,
+            "password": "54016166",
+            "method": "aes-256-cfb",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "b.iss.tf",
+            "server_port": 20000,
+            "password": "45605867",
+            "method": "aes-256-cfb",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "138.68.61.42",
+            "server_port": 23456,
+            "password": "75970228",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "47.89.9.201",
+            "server_port": 10003,
+            "password": "2237",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "47.88.188.62",
+            "server_port": 10000,
+            "password": "1528",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "221.229.173.206",
+            "server_port": 10078,
+            "password": "932",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "153.92.43.64",
+            "server_port": 443,
+            "password": "41651609",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "138.68.61.42",
+            "server_port": 23456,
+            "password": "75970228",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "138.68.61.42",
+            "server_port": 23456,
+            "password": "75970228",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "106.186.116.88",
+            "server_port": 443,
+            "password": "31803150",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "153.92.43.64",
+            "server_port": 443,
+            "password": "41651609",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "106.186.116.88",
+            "server_port": 443,
+            "password": "31803150",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "153.92.43.64",
+            "server_port": 443,
+            "password": "41651609",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        },
+        {
+            "server": "106.186.116.88",
+            "server_port": 443,
+            "password": "31803150",
+            "method": "rc4-md5",
+            "remarks": "11/11 17:56",
+            "auth": false
+        }
+    ],
+    "strategy": "com.shadowsocks.strategy.ha",
+    "index": -1,
+    "global": false,
+    "enabled": true,
+    "shareOverLan": false,
+    "isDefault": false,
+    "localPort": 1080,
+    "pacUrl": null,
+    "useOnlinePac": false
+}

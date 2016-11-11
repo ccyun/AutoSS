@@ -14,7 +14,7 @@
         "url": "http://www.ishadowsocks.org/",
         "type": "html",
         "filter": ".*[:|：]|\\n|\\r|\\s",
-        "block": "#free>div>div.row>div.col-lg-4",
+        "block": "#free>div>div.row>div.col-sm-4",
         "server": "h4:eq(0)",
         "port": "h4:eq(1)",
         "method": "h4:eq(3)",
