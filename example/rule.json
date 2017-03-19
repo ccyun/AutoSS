@@ -1,55 +1,22 @@
 [
-    {
-        "url": "http://freeshadowsocks.cf/",
-        "type": "html",
-        "filter": ".*[:|：]|\\n|\\r|\\s",
-        "block": "div.container div.col-md-6",
-        "server": "h4:eq(0)",
-        "port": "h4:eq(1)",
-        "method": "h4:eq(3)",
-        "password": "h4:eq(2)",
-        "auth": false
-    },
-    {
-        "url": "http://www.ishadowsocks.org/",
-        "type": "html",
-        "filter": ".*[:|：]|\\n|\\r|\\s",
-        "block": "#free>div>div.row>div.col-sm-4",
-        "server": "h4:eq(0)",
-        "port": "h4:eq(1)",
-        "method": "h4:eq(3)",
-        "password": "h4:eq(2)",
-        "auth": false
-    },
-    {
-        "url": "http://www.getshadowsocks.com/",
-        "type": "html",
-        "filter": ".*[:|：]|\\n|\\r|\\s",
-        "block": "#s",
-        "server": "p.lead:eq(0)",
-        "port": "p.lead:eq(1)",
-        "method": "p.lead:eq(3)",
-        "password": "p.lead:eq(2)",
-        "auth": false
-    },
-    {
-        "url": "http://www.360sb.net/",
-        "type": "html",
-        "filter": ".*[:|：]|\\n|\\r|\\s",
-        "block": "section#fh5co-about>div.container div.col-md-4",
-        "server": "div.fh5co-person>span.fh5co-position:eq(1)",
-        "port": "span.fh5co-position:eq(2)",
-        "method": "span.fh5co-position:eq(3)",
-        "password": "span.fh5co-position:eq(4)",
-        "auth": false
-    },
-    {
-        "url": "https://api.mianvpn.com/ajax.php?verify=true&mod=getfreess",
-        "type": "json",
-        "server": "i",
-        "port": "p",
-        "method": "m",
-        "password": "pw",
-        "auth": false
-    }
+	"https://ishadow.info/img/qr/usa.png",
+	"https://ishadow.info/img/qr/usb.png",
+	"https://ishadow.info/img/qr/usc.png",
+	"https://ishadow.info/img/qr/jpa.png",
+	"https://ishadow.info/img/qr/jpb.png",
+	"https://ishadow.info/img/qr/jpc.png",
+	"https://ishadow.info/img/qr/sga.png",
+	"https://ishadow.info/img/qr/sgb.png",
+	"https://ishadow.info/img/qr/sgc.png",
+
+	"http://free.shadowsocks8.cc/images/server01.png",
+	"http://free.shadowsocks8.cc/images/server02.png",
+	"http://free.shadowsocks8.cc/images/server03.png",
+
+	"http://freess.org/images/servers/jp01.png",
+	"http://freess.org/images/servers/jp02.png",
+	"http://freess.org/images/servers/jp03.png",
+	"http://freess.org/images/servers/us01.png",
+	"http://freess.org/images/servers/us02.png",
+	"http://freess.org/images/servers/us03.png"
 ]

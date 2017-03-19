@@ -13,8 +13,5 @@ func main() {
 	path, _ := filepath.Abs(file)
 	log.Println(path)
 	o := new(octopus.Octopus)
-	o.ConfigFile = path + "/gui-config.json"
-	o.RuleFile = path + "/rule.json"
-	o.ShadowsocksFIle = path + "/Shadowsocks.exe"
 	o.Run()
 }
