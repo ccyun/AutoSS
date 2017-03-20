@@ -1,91 +1,83 @@
 {
     "configs": [
         {
-            "server": "50.116.1.61",
+            "server": "139.162.67.43",
             "server_port": 443,
-            "password": "27567175",
+            "password": "30712952",
             "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
+            "remarks": "03/20 23:07",
             "auth": false
         },
         {
-            "server": "50.116.1.61",
+            "server": "98.126.219.89",
             "server_port": 443,
-            "password": "27567175",
+            "password": "15473722",
             "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
+            "remarks": "03/20 23:07",
             "auth": false
         },
         {
-            "server": "50.116.1.61",
+            "server": "139.162.78.55",
             "server_port": 443,
-            "password": "27567175",
+            "password": "57894647",
             "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
+            "remarks": "03/20 23:07",
             "auth": false
         },
         {
-            "server": "50.116.1.61",
+            "server": "139.162.75.52",
             "server_port": 443,
-            "password": "27567175",
+            "password": "08190454",
             "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
+            "remarks": "03/20 23:07",
             "auth": false
         },
         {
-            "server": "50.116.1.61",
+            "server": "188.166.186.129",
             "server_port": 443,
-            "password": "27567175",
+            "password": "18112143",
             "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
+            "remarks": "03/20 23:07",
             "auth": false
         },
         {
-            "server": "50.116.1.61",
-            "server_port": 443,
-            "password": "27567175",
-            "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
-            "auth": false
-        },
-        {
-            "server": "50.116.1.61",
-            "server_port": 443,
-            "password": "27567175",
-            "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
-            "auth": false
-        },
-        {
-            "server": "50.116.1.61",
-            "server_port": 443,
-            "password": "27567175",
-            "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
-            "auth": false
-        },
-        {
-            "server": "50.116.1.61",
-            "server_port": 443,
-            "password": "27567175",
-            "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
-            "auth": false
-        },
-        {
-            "server": "50.116.1.61",
-            "server_port": 443,
-            "password": "27567175",
-            "method": "aes-256-cfb",
-            "remarks": "03/20 22:43",
-            "auth": false
-        },
-        {
-            "server": "106.187.101.74",
-            "server_port": 8388,
-            "password": "75291827",
+            "server": "138.68.61.42",
+            "server_port": 23456,
+            "password": "29718103",
             "method": "rc4-md5",
-            "remarks": "03/20 22:43",
+            "remarks": "03/20 23:07",
+            "auth": false
+        },
+        {
+            "server": "192.81.128.7",
+            "server_port": 443,
+            "password": "50846835",
+            "method": "aes-256-cfb",
+            "remarks": "03/20 23:07",
+            "auth": false
+        },
+        {
+            "server": "106.186.116.88",
+            "server_port": 443,
+            "password": "35719560",
+            "method": "rc4-md5",
+            "remarks": "03/20 23:07",
+            "auth": false
+        },
+        {
+            "server": "104.160.173.130",
+            "server_port": 23456,
+            "password": "17942760",
+            "method": "chacha20",
+            "remarks": "03/20 23:07",
+            "auth": false
+        },
+        {
+            "server": "188.166.239.104",
+            "server_port": 8388,
+            "password": "75186738",
+            "method": "rc4-md5",
+            "remarks": "03/20 23:07",
             "auth": false
         }
     ],

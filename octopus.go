@@ -115,6 +115,7 @@ func Request(method string, url string, body io.Reader, contentType string) (int
 		}
 	}
 	client := &http.Client{}
+	client.Timeout = 5 * time.Second
 	response, err := client.Do(request)
 	if response != nil {
 		defer response.Body.Close()
@@ -153,7 +154,6 @@ func (o *Octopus) deqr(file string) {
 	dataInfo, _ := base64.StdEncoding.DecodeString(info.Data.RawData)
 	if info.Data.RawData != "" {
 		info.Data.RawData = string(dataInfo)
-		log.Println(info.Data.RawData)
 		d := strings.FieldsFunc(info.Data.RawData, func(s rune) bool {
 			switch s {
 			case '\n', 0x3A, 0x40:
@@ -169,6 +169,7 @@ func (o *Octopus) deqr(file string) {
 			conf.Method = d[0]
 			conf.Remarks = o.remarks
 			conf.Auth = false
+			fmt.Println(conf)
 			o.Config.Configs = append(o.Config.Configs, conf)
 		}
 	}
