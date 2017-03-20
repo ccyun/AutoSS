@@ -89,10 +89,10 @@ func (o *Octopus) Run() {
 	var wg sync.WaitGroup
 	wg.Add(len(o.Files))
 	for _, v := range o.Files {
-		go func() {
+		go func(v string) {
 			o.deqr(v)
 			wg.Done()
-		}()
+		}(v)
 	}
 	wg.Wait() //阻塞
 	log.Println("成功获取到 " + strconv.Itoa(len(o.Config.Configs)) + " 个账号密码")
@@ -139,7 +139,6 @@ func Request(method string, url string, body io.Reader, contentType string) (int
 }
 
 func (o *Octopus) deqr(file string) {
-
 	_, res, err := Request("GET", "http://cli.im/Api/Browser/deqr?data="+file, strings.NewReader(""), "")
 	if err != nil {
 		return
