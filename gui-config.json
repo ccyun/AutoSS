@@ -1,0 +1,114 @@
+{
+    "autoCheckUpdate": true,
+    "availabilityStatistics": false,
+    "checkPreRelease": false,
+    "configs": [
+        {
+            "server": "a.isxb.top",
+            "server_port": 10598,
+            "password": "isx.yt-58175212",
+            "method": "aes-256-cfb",
+            "plugin": "",
+            "plugin_opts": "",
+            "plugin_args": "",
+            "remarks": "",
+            "timeout": 5
+        },
+        {
+            "server": "b.isxb.top",
+            "server_port": 17786,
+            "password": "isx.yt-62983272",
+            "method": "aes-256-cfb",
+            "plugin": "",
+            "plugin_opts": "",
+            "plugin_args": "",
+            "remarks": "",
+            "timeout": 5
+        },
+        {
+            "server": "c.isxb.top",
+            "server_port": 14874,
+            "password": "isx.yt-89581251",
+            "method": "aes-256-cfb",
+            "plugin": "",
+            "plugin_opts": "",
+            "plugin_args": "",
+            "remarks": "",
+            "timeout": 5
+        },
+        {
+            "server": "a.isxc.top",
+            "server_port": 11092,
+            "password": "isx.yt-17670662",
+            "method": "aes-256-cfb",
+            "plugin": "",
+            "plugin_opts": "",
+            "plugin_args": "",
+            "remarks": "",
+            "timeout": 5
+        },
+        {
+            "server": "b.isxc.top",
+            "server_port": 10629,
+            "password": "isx.yt-82900067",
+            "method": "aes-256-cfb",
+            "plugin": "",
+            "plugin_opts": "",
+            "plugin_args": "",
+            "remarks": "",
+            "timeout": 5
+        },
+        {
+            "server": "c.isxc.top",
+            "server_port": 14141,
+            "password": "isx.yt-52413954",
+            "method": "aes-256-cfb",
+            "plugin": "",
+            "plugin_opts": "",
+            "plugin_args": "",
+            "remarks": "",
+            "timeout": 5
+        }
+    ],
+    "enabled": true,
+    "global": false,
+    "hotkey": {
+        "RegHotkeysAtStartup": false,
+        "ServerMoveDown": "",
+        "ServerMoveUp": "",
+        "ShowLogs": "",
+        "SwitchAllowLan": "",
+        "SwitchSystemProxy": "",
+        "SwitchSystemProxyMode": ""
+    },
+    "index": -1,
+    "isDefault": false,
+    "isIPv6Enabled": false,
+    "isVerboseLogging": false,
+    "localPort": 1080,
+    "logViewer": {
+        "BackgroundColor": "Black",
+        "Font": "Consolas, 8pt",
+        "TextColor": "White",
+        "toolbarShown": false,
+        "topMost": false,
+        "wrapText": false
+    },
+    "pacUrl": null,
+    "portableMode": true,
+    "proxy": {
+        "authPwd": "",
+        "authUser": "",
+        "proxyPort": 0,
+        "proxyServer": "",
+        "proxyTimeout": 3,
+        "proxyType": 0,
+        "useAuth": false,
+        "useProxy": false
+    },
+    "secureLocalPac": true,
+    "shareOverLan": false,
+    "strategy": "com.shadowsocks.strategy.ha",
+    "useOnlinePac": false,
+    "version": "4.1.7.1"
+}
