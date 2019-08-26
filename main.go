@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+
 	log.Println("正在采集账号...")
 	g, _ := collection.NewConfig("gui-config.json", "rule.json")
 	n, err := g.GetURLs()
