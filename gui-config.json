@@ -5,8 +5,8 @@
     "configs": [
         {
             "server": "a.isxb.top",
-            "server_port": 10598,
-            "password": "isx.yt-58175212",
+            "server_port": 17258,
+            "password": "isx.yt-58052181",
             "method": "aes-256-cfb",
             "plugin": "",
             "plugin_opts": "",
@@ -16,8 +16,8 @@
         },
         {
             "server": "b.isxb.top",
-            "server_port": 17786,
-            "password": "isx.yt-62983272",
+            "server_port": 13460,
+            "password": "isx.yt-69332120",
             "method": "aes-256-cfb",
             "plugin": "",
             "plugin_opts": "",
@@ -27,8 +27,8 @@
         },
         {
             "server": "c.isxb.top",
-            "server_port": 14874,
-            "password": "isx.yt-89581251",
+            "server_port": 10095,
+            "password": "isx.yt-70231433",
             "method": "aes-256-cfb",
             "plugin": "",
             "plugin_opts": "",
@@ -38,8 +38,8 @@
         },
         {
             "server": "a.isxc.top",
-            "server_port": 11092,
-            "password": "isx.yt-17670662",
+            "server_port": 15217,
+            "password": "isx.yt-43138831",
             "method": "aes-256-cfb",
             "plugin": "",
             "plugin_opts": "",
@@ -49,19 +49,8 @@
         },
         {
             "server": "b.isxc.top",
-            "server_port": 10629,
-            "password": "isx.yt-82900067",
-            "method": "aes-256-cfb",
-            "plugin": "",
-            "plugin_opts": "",
-            "plugin_args": "",
-            "remarks": "",
-            "timeout": 5
-        },
-        {
-            "server": "c.isxc.top",
-            "server_port": 14141,
-            "password": "isx.yt-52413954",
+            "server_port": 19312,
+            "password": "isx.yt-81898179",
             "method": "aes-256-cfb",
             "plugin": "",
             "plugin_opts": "",

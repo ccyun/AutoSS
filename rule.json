@@ -1,7 +1,7 @@
 [
 	{
-		"page": "https://free.ishadowx.biz/",
-		"list_rule": "[data-lightbox-gallery=gallery1]",
+		"url": "https://free.ishadowx.biz/",
+		"list": "[data-lightbox-gallery=gallery1]",
 		"attr": "href"
 	}
 ]

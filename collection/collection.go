@@ -1,17 +1,20 @@
-package lib
+package collection
 
 import (
-	"AutoSS/lib/collection"
+	"bytes"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 
 	"os"
 	"strconv"
 	"strings"
 
+	"github.com/PuerkitoBio/goquery"
 	"github.com/tuotoo/qrcode"
 )
 
@@ -19,8 +22,15 @@ import (
 type GuiConf struct {
 	guiConfigFile string
 	ruleFile      string
-	ruleConf      []collection.RuleConf
+	ruleConf      []RuleConf
 	data          map[string]interface{}
+}
+
+//RuleConf 规则
+type RuleConf struct {
+	URL  string `json:"url"`
+	List string `json:"list"`
+	Attr string `json:"attr"`
 }
 
 //Conf 配置账号
@@ -36,81 +46,9 @@ type Conf struct {
 	Timeout    uint   `json:"timeout"`
 }
 
-//NewConfig 新配置
-func NewConfig(guiConfigFile string, ruleFile string) (*GuiConf, error) {
-	g := new(GuiConf)
-	g.guiConfigFile = guiConfigFile
-	if err := g.readConfig(&g.data); err != nil {
-		return nil, err
-	}
-	g.data["configs"] = []interface{}{}
-
-	g.ruleFile = ruleFile
-
-	if err := g.readRule(&g.ruleConf); err != nil {
-		return nil, err
-	}
-
-	return g, nil
-}
-
-//readConfig 读取配置
-func (g *GuiConf) readConfig(data interface{}) error {
-	var (
-		err error
-		s   []byte
-	)
-	if s, err = ioutil.ReadFile(g.guiConfigFile); err != nil {
-		return err
-	}
-	if err = json.Unmarshal(s, data); err != nil {
-		return err
-	}
-	return nil
-}
-
-//readRule 读取规则
-func (g *GuiConf) readRule(data interface{}) error {
-	var (
-		err error
-		s   []byte
-	)
-	if s, err = ioutil.ReadFile(g.ruleFile); err != nil {
-		return err
-	}
-	if err = json.Unmarshal(s, data); err != nil {
-		return err
-	}
-	return nil
-}
-
-//Save 保存配置
-func (g *GuiConf) Save() {
-	dstFile, _ := os.Create(g.guiConfigFile)
-	str, _ := json.MarshalIndent(g.data, "", "    ")
-	dstFile.WriteString(string(str))
-	dstFile.Close()
-}
-
-//GetURLs 采集
-func (g *GuiConf) GetURLs() error {
-	configs := []*Conf{}
-	for _, r := range g.ruleConf {
-		c := collection.NewCollection(r)
-		c.Page()
-		for _, v := range c.Attrs() {
-			if vv, err := g.Decode(fmt.Sprintf("%s%s", r.Page, v)); err == nil {
-				configs = append(configs, vv)
-			}
-		}
-	}
-	g.data["configs"] = configs
-	return nil
-}
-
-//Decode 解码
-func (g *GuiConf) Decode(s string) (*Conf, error) {
-	res, err := http.Get(s)
+//HTTPCurl Get 请求
+func HTTPCurl(url string) (io.Reader, error) {
+	res, err := http.Get(url)
 	if err != nil {
 		return nil, err
 	}
@@ -118,11 +56,87 @@ func (g *GuiConf) Decode(s string) (*Conf, error) {
 	if res.StatusCode != 200 {
 		return nil, fmt.Errorf("status code error: %d %s", res.StatusCode, res.Status)
 	}
-	m, err2 := qrcode.Decode(res.Body)
+	s, _ := ioutil.ReadAll(res.Body)
+	return bytes.NewReader(s), nil
+}
+
+//ReadJSONConfig 读取配置
+func ReadJSONConfig(file string, data interface{}) error {
+	var (
+		err error
+		s   []byte
+	)
+	if s, err = ioutil.ReadFile(file); err != nil {
+		return err
+	}
+	if err = json.Unmarshal(s, data); err != nil {
+		return err
+	}
+	return nil
+}
+
+//NewConfig 新配置
+func NewConfig(guiConfigFile string, ruleFile string) (*GuiConf, error) {
+	g := new(GuiConf)
+	g.guiConfigFile = guiConfigFile
+	if err := ReadJSONConfig(guiConfigFile, &g.data); err != nil {
+		return nil, err
+	}
+	g.data["configs"] = []interface{}{}
+	g.ruleFile = ruleFile
+	if err := ReadJSONConfig(ruleFile, &g.ruleConf); err != nil {
+		return nil, err
+	}
+	return g, nil
+}
+
+//Save 保存配置
+func (g *GuiConf) Save() {
+
+	dstFile, _ := os.Create(g.guiConfigFile)
+	str, _ := json.MarshalIndent(g.data, "", "    ")
+	dstFile.WriteString(string(str))
+
+	dstFile.Close()
+}
+
+//GetURLs 采集
+func (g *GuiConf) GetURLs() (int, error) {
+	configs := []*Conf{}
+	for _, r := range g.ruleConf {
+		log.Println("采集网页：", r.URL)
+		res, err := HTTPCurl(r.URL)
+		if err != nil {
+			continue
+		}
+		doc, err2 := goquery.NewDocumentFromReader(res)
+		if err2 != nil {
+			log.Println(err2)
+			continue
+		}
+
+		doc.Find(r.List).Each(func(i int, s *goquery.Selection) {
+			if v, ok := s.Attr(r.Attr); ok {
+				if vv, err := g.QRDecode(fmt.Sprintf("%s%s", r.URL, v)); err == nil {
+					configs = append(configs, vv)
+				}
+			}
+		})
+	}
+	g.data["configs"] = configs
+	return len(configs), nil
+}
+
+//QRDecode 解码
+func (g *GuiConf) QRDecode(s string) (*Conf, error) {
+	res, err := HTTPCurl(s)
+	if err != nil {
+		return nil, err
+	}
+	m, err2 := qrcode.Decode(res)
 	if err2 != nil {
 		return nil, err2
 	}
-
 	ss, err3 := base64.StdEncoding.DecodeString(strings.Replace(m.Content, "ss://", "", -1))
 	if err3 != nil {
 		return nil, err3

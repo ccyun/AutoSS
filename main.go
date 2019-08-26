@@ -1,7 +1,7 @@
 package main
 
 import (
-	"AutoSS/lib"
+	"AutoSS/collection"
 	"log"
 	"os/exec"
 	"time"
@@ -9,8 +9,13 @@ import (
 
 func main() {
 	log.Println("正在采集账号...")
-	g, _ := lib.NewConfig("gui-config.json", "rule.json")
-	g.GetURLs()
+	g, _ := collection.NewConfig("gui-config.json", "rule.json")
+	n, err := g.GetURLs()
+	if err != nil {
+		log.Println("采集出错", err)
+		return
+	}
+	log.Printf("采集了 %d 个账号", n)
 	g.Save()
 	reload()
 }
